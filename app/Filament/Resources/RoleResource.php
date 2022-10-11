@@ -17,7 +17,7 @@ use App\Filament\Resources\RoleResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\RoleResource\RelationManagers;
 use App\Filament\Resources\RoleResource\RelationManagers\PermissionsRelationManager;
-use Filament\Forms\Components\MultiSelect;
+use Filament\Forms\Components\Select;
 
 class RoleResource extends Resource
 {
@@ -35,7 +35,7 @@ class RoleResource extends Resource
                         TextInput::make('name')
                             ->unique(ignoreRecord: true)
                             ->required(),
-                        MultiSelect::make('permissions')
+                        Select::make('permissions')
                             ->relationship('permissions', 'name')
                             ->preload()
                             ->required()
