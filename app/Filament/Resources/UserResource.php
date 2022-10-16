@@ -29,6 +29,7 @@ use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserResource\RelationManagers\RolesRelationManager;
 
 class UserResource extends Resource
 {
@@ -37,6 +38,8 @@ class UserResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-users';
 
     protected static ?string $navigationGroup = 'Admin Management';
+
+    // protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form {
         return $form
