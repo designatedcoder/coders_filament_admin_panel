@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Filament\Facades\Filament;
+use Illuminate\Foundation\Vite;
 use Filament\Navigation\UserMenuItem;
 use Illuminate\Support\ServiceProvider;
 use App\Filament\Resources\RoleResource;
@@ -28,6 +29,9 @@ class FilamentServiceProvider extends ServiceProvider
      */
     public function boot() {
         Filament::serving(function() {
+            Filament::registerTheme(
+                app(Vite::class)('resources/css/filament.css'),
+            );
             if (auth()->user()) {
                 if (auth()->user()->is_admin === 1 && auth()->user()->hasAnyRole(['super-admin', 'admin', 'moderator'])) {
                     Filament::registerUserMenuItems([
